@@ -1,33 +1,71 @@
 # Hermes Free Model Manager
 
-**Unofficial Windows companion for [Hermes Agent](https://github.com/NousResearch/hermes-agent).** Discover candidate free-tier models, review tool-calling evidence, and prepare a user-controlled cross-provider fallback configuration. This project is not affiliated with NousResearch.
+[English](README.md) | [繁體中文](README.zh-TW.md)
 
-## Download (Windows)
+[![Release](https://img.shields.io/github/v/release/SmartyJohnway/hermes-free-model-manager?include_prereleases&label=Release)](https://github.com/SmartyJohnway/hermes-free-model-manager/releases/tag/v0.1.0-beta)
+[![Windows](https://img.shields.io/badge/Windows-Portable-0078D4?logo=windows)](https://github.com/SmartyJohnway/hermes-free-model-manager/releases/tag/v0.1.0-beta)
+[![Python Included](https://img.shields.io/badge/Python-Included-3776AB?logo=python&logoColor=white)](https://github.com/SmartyJohnway/hermes-free-model-manager/releases/tag/v0.1.0-beta)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Status: Beta](https://img.shields.io/badge/Status-Public_Beta-orange)](https://github.com/SmartyJohnway/hermes-free-model-manager/releases)
 
-Download the latest **Windows Portable ZIP** from [Releases](https://github.com/SmartyJohnway/hermes-free-model-manager/releases). Extract the complete archive to a writable folder and double-click **START-MANAGER.cmd**. No Python installation required. Windows SmartScreen may warn about an unsigned community application; review the source and checksums before running.
+**Discover free-tier AI models across providers. Manage Hermes Agent fallback models from a standalone Windows desktop GUI.**
 
-**Hermes Agent/Desktop is a separate prerequisite for reading or applying actual Hermes configuration.** Without Hermes, the Manager can launch with an empty catalog, but configuration actions are unavailable. This is a beta: provider free-tier eligibility and model capabilities vary by account and time; no free quota or Tool Calling capability is guaranteed.
+A community-built, local-first companion for [Hermes Agent](https://github.com/NousResearch/hermes-agent). Find model candidates, inspect free-tier eligibility evidence, plan cross-provider fallbacks, and review configuration changes before applying them. **Your primary model remains your choice.**
 
-## What it does
+> [!IMPORTANT]
+> **Unofficial project, not affiliated with NousResearch.** Free-tier eligibility depends on the provider, account, region, and time. Model availability, pricing, tool calling, and Hermes version compatibility are not guaranteed.
 
-- Collects model candidates across providers, including candidates not yet configured in Hermes.
-- Separates candidate discovery from account-specific eligibility and Tool Calling evidence.
-- Keeps primary-model choice manual; fallback ordering can be prepared with ChatGPT.
-- Offers preview, explicit confirmation, backups, and restore for supported Hermes configuration transactions.
-- Avoids unattended paid inference; active compatibility probes require user action.
+## Download & quick start
 
-## Source development
+**[Download v0.1.0-beta — Windows Portable ZIP](https://github.com/SmartyJohnway/hermes-free-model-manager/releases/tag/v0.1.0-beta)**
 
-Requires Windows and Python 3 with Tkinter. Install `requirements.txt` into a virtual environment and run `python -B src/manager_ui.py` from the repository root. CLI: `python -B scripts/manager_cli.py --help`. Tests: `python -B -m unittest discover -s tests -v`.
+1. Download the Windows Portable ZIP from **Assets** on the release page.
+2. Extract the **entire ZIP** into a writable folder.
+3. Double-click `START-MANAGER.cmd` to open the GUI.
 
-## Build a portable ZIP
+**No Python installation or installer required.** Hermes Agent must be installed separately for reading or applying a real Hermes configuration. Without Hermes, the Manager can start with an empty model catalog. The app is currently unsigned and may trigger a Windows SmartScreen warning.
 
-Install `requirements-build.txt`, then run `powershell -NoProfile -ExecutionPolicy Bypass -File packaging/build-portable.ps1` on Windows. The script uses PyInstaller one-folder mode; review `THIRD_PARTY_NOTICES.md` and the bundled dependencies before redistributing.
+## Features
 
-## Privacy and limitations
+| Feature | What it does |
+| --- | --- |
+| **Free-model discovery** | Explore candidates from multiple providers, including models not already configured in Hermes |
+| **Evidence-aware catalog** | Distinguish public model metadata from account-specific free eligibility and tested tool-calling support |
+| **Manual primary model** | Keep primary-model selection under your control |
+| **Cross-provider fallback planning** | Prepare and review fallback ordering with ChatGPT; no hard-coded automatic ranking |
+| **Controlled configuration** | Preview changes and use explicit confirmation, backups, and restore for supported Hermes settings |
+| **Opt-in checks** | Avoid continuous inference probes and unexpected API usage |
 
-The public repository excludes local `state/`, `reports/`, credentials, and personal account audits. Do not commit your Hermes config, tokens, provider login data or local reports. See [Security](SECURITY.md). This first beta has been smoke-tested in a clean Windows Sandbox without Python; that test does **not** establish compatibility with every Hermes release or provider account.
+## Who is it for?
 
-## License
+Hermes Agent users who want to compare free-tier model options, reduce manual fallback maintenance, and keep configuration changes transparent. This is **not** a provider subscription, free API-key generator, or replacement for Hermes Agent.
 
-MIT for this project's original source code; third-party dependencies retain their own licenses. See [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+## Current beta scope
+
+- **Platform:** Windows, portable ZIP containing Python runtime.
+- **First-run validation:** clean Windows Sandbox without Python or Hermes installed — ZIP extraction and GUI smoke test passed.
+- **Not yet established:** compatibility with every Hermes version, provider, account entitlement, or model.
+- **Privacy:** local runtime `state/` and private reports are excluded from the public repository; never upload credentials or Hermes config to GitHub.
+- **License:** MIT for this project's original code. Bundled dependency licenses are included in `THIRD_PARTY_LICENSES/`.
+
+## Develop from source
+
+Windows + Python 3 with Tkinter:
+
+```powershell
+python -m pip install -r requirements.txt
+python -B src/manager_ui.py
+python -B -m unittest discover -s tests -v
+```
+
+To build the portable distribution, install `requirements-build.txt` and run `packaging/build-portable.ps1`. Review [third-party notices](THIRD_PARTY_NOTICES.md) before redistribution.
+
+## Documentation & feedback
+
+- [繁體中文使用說明](README.zh-TW.md)
+- [Release notes and downloads](https://github.com/SmartyJohnway/hermes-free-model-manager/releases)
+- [Issues — bugs and feature requests](https://github.com/SmartyJohnway/hermes-free-model-manager/issues)
+- [Security and privacy](SECURITY.md)
+- [License](LICENSE) · [Third-party notices](THIRD_PARTY_NOTICES.md)
+
+If this project helps your Hermes workflow, consider starring the repository so other users can find it.
